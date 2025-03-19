@@ -1,4 +1,4 @@
-#Rule of the Pigeons
+# Rule of the Pigeons
 This is a Unity game I was assigned to create for college. It's a basic 2D platformer where you must save all the birds (pigeons) and destroy the falcons who have terrorized their forest.
 The game isn't perfect, as I had assistance from ChatGPT with the code (since I’m not a programmer), but if you would like to see the source, game resources, and files, they are available in this repository.
 
