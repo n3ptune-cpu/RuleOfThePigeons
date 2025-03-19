@@ -4,7 +4,7 @@ The game isn't perfect, as I had assistance from ChatGPT with the code (since I�
 
 ### All assets belong to their respective creators!
 ![image](https://github.com/user-attachments/assets/1f938ea0-bd77-4c38-9f62-fec75b10efce)
-This game was created using Unity Editor 2022.34f1, which was the version of the editor installed on the college’s system.
+This game was created using `Unity Editor 2022.34f1` and `Visual Studio 2022 Community`, which was the version of the editor installed on the college’s system.
 
 You can either build the game yourself and make your own modifications, or try it out with the pre-compiled version in the releases tab.
 Since I’m not a programmer, I received assistance from ChatGPT for the code (which was allowed for the assignment).
