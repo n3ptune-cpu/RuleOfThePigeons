@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Powerup
   - FinishGame
+  - ResetZone
   layers:
   - Default
   - TransparentFX

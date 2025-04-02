@@ -16,6 +16,7 @@ public class PlayerControler : MonoBehaviour
     private AudioSource footstep;
     private int totalPigeons;
     private int totalFalcons;
+    private Vector3 startPosition; // Store the starting position of the player
     [SerializeField] private LayerMask Ground;
     [SerializeField] private int pigeons = 0;
     [SerializeField] private TextMeshProUGUI pigeonsText;
@@ -50,6 +51,7 @@ public class PlayerControler : MonoBehaviour
         footstep = GetComponent<AudioSource>();
         totalPigeons = GameObject.FindGameObjectsWithTag("Collectable").Length; // Count all collectibles in the level
         totalFalcons = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        startPosition = transform.position;
 
     }
 
@@ -75,6 +77,13 @@ public class PlayerControler : MonoBehaviour
     {
         Debug.Log("Collided with: " + collision.gameObject.name);  // Log the name of the object collided with
 
+        if (collision.CompareTag("ResetZone"))
+        {
+            Debug.Log("Player hit reset zone! Returning to start.");
+            transform.position = startPosition; // Reset player's position
+            rb.velocity = Vector2.zero; // Stop movement
+        }
+
         // Collecting collectibles
         if (collision.tag == "Collectable")
         {
@@ -97,6 +106,7 @@ public class PlayerControler : MonoBehaviour
         {
             if (pigeons >= totalPigeons)
             {
+                isTimeUp = true;  // Stop the timer when the level is completed
                 levelMessage.text = "Level Complete! Entering next level...";
                 StartCoroutine(LoadNextLevel());
             }
@@ -114,6 +124,7 @@ public class PlayerControler : MonoBehaviour
             // Check both pigeons collected and falcons destroyed
             if (pigeons >= totalPigeons && destroyedFalcons == totalFalcons)
             {
+                isTimeUp = true;
                 levelMessage.text = "All pigeons are saved! Thanks for playing Rule of The Pigeons!";
                 StartCoroutine(EndGame());  // Start the game over coroutine
             }
@@ -256,19 +267,21 @@ public class PlayerControler : MonoBehaviour
 
     private void UpdateTimer()
     {
+        if (isTimeUp) return; // Stop updating if the level is completed
+
         if (countdownTime > 0)
         {
-            countdownTime -= Time.deltaTime; // Reduce time
-            countdownText.text = Mathf.Ceil(countdownTime).ToString(); // Display as whole number
+            countdownTime -= Time.deltaTime;
+            countdownText.text = Mathf.Ceil(countdownTime).ToString();
         }
         else
         {
             isTimeUp = true;
-            RestartLevel(); // Call function to restart
+            RestartLevel();
         }
     }
 
-    private void RestartLevel()
+    public void RestartLevel()
     {
         levelMessage.text = "Time's up! Restarting level...";
         Debug.Log("Time is up! Restarting level...");
