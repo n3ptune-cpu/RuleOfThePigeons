@@ -23,5 +23,6 @@ The assignment I was provided required me to include the following features:
 It’s a pretty basic concept, right? Well, yes, but most people in my class, including me, are not experts in programming or using Unity, so this is my first attempt at creating a 2D game. Please don’t judge me too harshly!
 
 If you have any questions, feel free to contact me!
+-
 _Also keep in mind, since this a college project, it isn't maintained. I have only created this game for the assignment I had to complete and so since that is completed, there is no reason to commit and develop more changes here._
 
